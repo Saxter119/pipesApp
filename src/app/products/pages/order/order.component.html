@@ -1,0 +1,48 @@
+<p-panel [showHeader]=true header="Pipes personalizados" class="pt-2">
+
+    <p>Pipes personalizados - hechos por {{ 'nosotros' | toggleCase:isUpperCase}}</p>
+</p-panel>
+
+
+
+<p-toolbar>
+
+    <div class="p-toolbar-group-start">
+
+        <p-button label="ToogleCase" icon="pi pi-search" styleClass="p-button-info" (click)="changeCase()"></p-button>
+
+    </div>
+
+    <div class="p-toolbar-group-end">
+
+        <p-button label="Por nombre" icon="pi pi-sort" styleClass="p-button-success mr-2"></p-button>
+
+        <p-button label="Por volar" icon="pi pi-sort" styleClass="p-button-help mr-2"></p-button>
+
+
+        <p-button label="Por color" icon="pi pi-sort" styleClass="p-button-danger mr-2"></p-button>
+    </div>
+
+    <div class="grid">
+
+        <p-table [value]="heroes" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{ product.code }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.quantity }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</p-toolbar>
