@@ -3,14 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 
-
-const routes: Routes = [];
+const appRoutes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+  }
+];
 
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),  
+    RouterModule.forRoot(appRoutes),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }
