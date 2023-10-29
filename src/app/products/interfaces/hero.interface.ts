@@ -1,5 +1,5 @@
 
-export enum Color { 'green', 'gray', 'blue', 'black' }
+export enum Color { 'green', 'gray', 'blue', 'black', 'red' }
 
 export interface Hero {
     name: string,

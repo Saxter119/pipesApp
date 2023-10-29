@@ -3,8 +3,6 @@
     <p>Pipes personalizados - hechos por {{ 'nosotros' | toggleCase:isUpperCase}}</p>
 </p-panel>
 
-
-
 <p-toolbar>
 
     <div class="p-toolbar-group-start">
@@ -15,34 +13,37 @@
 
     <div class="p-toolbar-group-end">
 
-        <p-button label="Por nombre" icon="pi pi-sort" styleClass="p-button-success mr-2"></p-button>
+        <p-button (onClick)=" changeOrder('name')"   label="Por nombre" icon="pi pi-sort" styleClass="p-button-success mr-2"></p-button>
 
-        <p-button label="Por volar" icon="pi pi-sort" styleClass="p-button-help mr-2"></p-button>
+        <p-button (onClick)=" changeOrder('canFly')" label="Por volar" icon="pi pi-sort" styleClass="p-button-help mr-2"></p-button>
 
 
-        <p-button label="Por color" icon="pi pi-sort" styleClass="p-button-danger mr-2"></p-button>
-    </div>
+        <p-button (onClick)=" changeOrder('color')" label="Por color" icon="pi pi-sort" styleClass="p-button-danger mr-2"></p-button>
 
-    <div class="grid">
-
-        <p-table [value]="heroes" [tableStyle]="{ 'min-width': '50rem' }">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Quantity</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-product>
-                <tr>
-                    <td>{{ product.code }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.category }}</td>
-                    <td>{{ product.quantity }}</td>
-                </tr>
-            </ng-template>
-        </p-table>
     </div>
 
 </p-toolbar>
+
+<div class="grid">
+    <div class="col mt-4">
+
+        <p-panel>
+            <p-table [value]="heroes | sortBy:orderBy" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Vuela</th>
+                        <th>Color</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-hero>
+                    <tr>
+                        <td>{{ hero.name }}</td>
+                        <td>{{ hero.canFly | canFly}}</td>
+                        <td>{{ hero.color }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-panel>
+    </div>
+</div>

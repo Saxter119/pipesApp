@@ -17,32 +17,46 @@ export class OrderComponent implements OnInit {
   changeCase() {
     this.isUpperCase = !this.isUpperCase
   }
-  
+
   public isUpperCase: boolean = false
 
-public heroes: Hero[]= [
-  {
-    name: 'Batman',
-    canFly: false,
-    color: Color.black
-  },
-  {
-    name: 'NightWing',
-    canFly: false,
-    color: Color.blue
-  },
-  {
-    name: 'Superman',
-    canFly: false,
-    color: Color.blue
-  },
-]
+  public orderBy?: keyof Hero;
 
+  public heroes: Hero[] = [
+    {
+      name: 'Batman',
+      canFly: false,
+      color: Color.black
+    },
+    {
+      name: 'NightWing',
+      canFly: false,
+      color: Color.blue
+    },
+    {
+      name: 'Superman',
+      canFly: true,
+      color: Color.blue
+    },
+    {
+      name: 'Robin',
+      canFly: false,
+      color: Color.green
+    },
+    {
+      name: 'Spiderman',
+      canFly: false,
+      color: Color.red
+    },
+    {
+      name: 'Silver surfer',
+      canFly: true,
+      color: Color.gray
+    },
+  ]
 
-
-
-
-
-
+  changeOrder(orderBy: keyof Hero): void {
+    this.orderBy = orderBy
+  }
 
 }
